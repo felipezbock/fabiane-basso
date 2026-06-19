@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fabiane Basso — Fisioterapeuta | Passo Fundo, RS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --sage: #8fa68a;
+  --sage-light: #b5c9af;
+  --sage-dark: #5a7a55;
+  --gold: #c9a84c;
+  --gold-light: #e2c97e;
+  --cream: #fdf9f4;
+  --cream-dark: #f5ede0;
+  --white: #ffffff;
+  --charcoal: #2c2c2c;
+  --text-soft: #6b6b6b;
+  --text-light: #9a9a9a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Jost', sans-serif; color: var(--charcoal); background: var(--cream); overflow-x: hidden; }
+
+/* TOPBAR */
+.topbar { background: var(--sage-dark); color: var(--cream); text-align: center; padding: 10px 20px; font-size: 13px; font-weight: 300; letter-spacing: 0.08em; }
+.topbar span { color: var(--gold-light); font-weight: 500; }
+
+/* NAVBAR */
+.navbar { position: sticky; top: 0; z-index: 100; background: rgba(253,249,244,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(143,166,138,0.2); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 70px; transition: box-shadow 0.3s; }
+.navbar.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.08); }
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; color: var(--charcoal); letter-spacing: 0.05em; }
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a { text-decoration: none; font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-soft); transition: color 0.3s; }
+.nav-links a:hover { color: var(--sage-dark); }
+.nav-cta { background: var(--gold); color: var(--white); border: none; padding: 10px 24px; font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; text-decoration: none; transition: background 0.3s; }
+.nav-cta:hover { background: var(--gold-light); }
+
+/* HERO */
+.hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; position: relative; overflow: hidden; }
+.hero-left { display: flex; flex-direction: column; justify-content: center; padding: 120px 80px 80px 80px; position: relative; z-index: 2; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(143,166,138,0.12); border: 1px solid rgba(143,166,138,0.35); padding: 7px 18px; margin-bottom: 36px; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sage-dark); width: fit-content; animation: fadeUp 0.8s ease both; }
+.hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
+.hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(48px, 6vw, 76px); font-weight: 300; line-height: 1.08; color: var(--charcoal); margin-bottom: 28px; animation: fadeUp 0.8s ease 0.15s both; }
+.hero-title em { font-style: italic; color: var(--sage-dark); }
+.hero-title .gold { color: var(--gold); }
+.hero-sub { font-size: 16px; font-weight: 300; line-height: 1.75; color: var(--text-soft); max-width: 420px; margin-bottom: 48px; animation: fadeUp 0.8s ease 0.3s both; }
+.hero-actions { display: flex; gap: 16px; animation: fadeUp 0.8s ease 0.45s both; }
+.btn-primary { background: var(--sage-dark); color: var(--white); padding: 16px 36px; font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: all 0.3s; display: inline-flex; align-items: center; gap: 10px; }
+.btn-primary:hover { background: var(--charcoal); transform: translateY(-2px); }
+.btn-secondary { border: 1.5px solid var(--sage); color: var(--sage-dark); padding: 16px 36px; font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: all 0.3s; }
+.btn-secondary:hover { background: var(--sage-dark); color: var(--white); border-color: var(--sage-dark); }
+.hero-stats { display: flex; gap: 40px; margin-top: 64px; padding-top: 40px; border-top: 1px solid rgba(143,166,138,0.25); animation: fadeUp 0.8s ease 0.6s both; }
+.stat-number { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 500; color: var(--charcoal); line-height: 1; }
+.stat-number span { color: var(--gold); }
+.stat-label { font-size: 12px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); margin-top: 6px; }
+.hero-right { position: relative; overflow: hidden; }
+.hero-photo { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(253,249,244,0.3) 0%, transparent 40%); }
+.hero-decor { position: absolute; bottom: 40px; right: 40px; background: rgba(253,249,244,0.92); backdrop-filter: blur(8px); border: 1px solid rgba(201,168,76,0.3); padding: 20px 28px; animation: fadeUp 1s ease 0.8s both; }
+.hero-decor-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-light); margin-bottom: 4px; }
+.hero-decor-text { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 500; color: var(--charcoal); }
+.hero-decor-text em { color: var(--gold); font-style: italic; }
+
+/* SECTION BASE */
+section { position: relative; }
+.section-label { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; font-weight: 500; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 4vw, 52px); font-weight: 300; line-height: 1.15; color: var(--charcoal); }
+.section-title em { font-style: italic; color: var(--sage-dark); }
+
+/* SOBRE */
+.sobre { padding: 120px 80px; background: var(--white); display: block; }
+.sobre-visual { position: relative; }
+.sobre-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; position: relative; z-index: 1; }
+.sobre-img-accent { position: absolute; top: -20px; left: -20px; width: 60%; height: 60%; border: 2px solid rgba(201,168,76,0.3); z-index: 0; pointer-events: none; }
+.sobre-tag { position: absolute; bottom: -20px; right: -20px; background: var(--sage-dark); color: var(--white); padding: 24px 32px; }
+.sobre-tag-num { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 300; line-height: 1; }
+.sobre-tag-txt { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.8; margin-top: 4px; }
+.sobre-content .section-title { margin-bottom: 28px; }
+.sobre-text { font-size: 16px; font-weight: 300; line-height: 1.85; color: var(--text-soft); margin-bottom: 20px; }
+.sobre-cred { display: inline-flex; align-items: center; gap: 10px; background: rgba(143,166,138,0.1); padding: 12px 20px; margin-top: 16px; font-size: 12px; letter-spacing: 0.12em; color: var(--sage-dark); text-transform: uppercase; font-weight: 500; }
+
+/* DIFERENCIAIS */
+.diferenciais { padding: 120px 80px; background: var(--cream); }
+.diferenciais-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 72px; }
+.diferenciais-header .section-title { max-width: 500px; }
+.diferenciais-intro { max-width: 340px; font-size: 15px; font-weight: 300; line-height: 1.7; color: var(--text-soft); }
+.cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.card { background: var(--white); padding: 48px 40px; transition: all 0.4s ease; position: relative; overflow: hidden; }
+.card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
+.card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.08); }
+.card:hover::after { transform: scaleX(1); }
+.card-icon { font-size: 32px; margin-bottom: 24px; display: block; }
+.card-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; color: var(--charcoal); margin-bottom: 14px; }
+.card-text { font-size: 14px; font-weight: 300; line-height: 1.75; color: var(--text-soft); }
+
+/* SERVIÇOS */
+.servicos { padding: 120px 80px; background: var(--sage-dark); color: var(--white); }
+.servicos .section-label { color: var(--gold-light); }
+.servicos .section-title { color: var(--white); margin-bottom: 64px; }
+.servicos .section-title em { color: var(--sage-light); }
+
+.servicos-layout { display: grid; grid-template-columns: 1fr 420px; gap: 60px; align-items: start; }
+
+.servicos-grid { display: flex; flex-direction: column; gap: 1px; background: rgba(255,255,255,0.1); }
+.servico-item { background: rgba(255,255,255,0.04); padding: 40px 48px; display: flex; align-items: flex-start; gap: 28px; transition: background 0.3s; }
+.servico-item:hover { background: rgba(255,255,255,0.09); }
+.servico-num { font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 300; color: rgba(201,168,76,0.35); line-height: 1; flex-shrink: 0; }
+.servico-name { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; margin-bottom: 10px; }
+.servico-desc { font-size: 14px; font-weight: 300; line-height: 1.7; opacity: 0.7; }
+
+.servicos-foto { position: relative; }
+.servicos-foto img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 500px; }
+.servicos-foto-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%); padding: 32px 24px 20px; }
+.servicos-foto-caption span { font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.7); }
+
+/* GALERIA */
+.galeria { padding: 120px 80px; background: var(--cream-dark); }
+.galeria-header { margin-bottom: 56px; }
+.galeria-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+.galeria-item { overflow: hidden; }
+.galeria-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; transition: transform 0.5s ease; }
+.galeria-item:hover .galeria-img { transform: scale(1.04); }
+
+/* AVALIAÇÕES */
+.avaliacoes { padding: 120px 80px; background: var(--white); }
+.avaliacoes-header { margin-bottom: 64px; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.review-card { padding: 40px; background: var(--cream); border-left: 3px solid var(--gold); transition: box-shadow 0.3s; }
+.review-card:hover { box-shadow: 0 16px 48px rgba(0,0,0,0.07); }
+.review-stars { color: var(--gold); font-size: 16px; letter-spacing: 2px; margin-bottom: 20px; }
+.review-text { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; font-weight: 400; line-height: 1.6; color: var(--charcoal); margin-bottom: 24px; }
+.review-author { font-size: 12px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-light); }
+
+/* LOCALIZAÇÃO */
+.localizacao { padding: 120px 80px; background: var(--cream); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.loc-content .section-title { margin-bottom: 40px; }
+.info-block { margin-bottom: 32px; }
+.info-label { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 10px; }
+.info-value { font-size: 16px; font-weight: 300; color: var(--charcoal); line-height: 1.6; }
+.info-value a { color: inherit; text-decoration: none; }
+.horarios-table { width: 100%; border-collapse: collapse; }
+.horarios-table tr { border-bottom: 1px solid rgba(143,166,138,0.2); }
+.horarios-table td { padding: 10px 0; font-size: 14px; font-weight: 300; color: var(--text-soft); }
+.horarios-table td:first-child { font-weight: 500; color: var(--charcoal); text-transform: capitalize; }
+.horarios-table td:last-child { text-align: right; }
+.closed { color: var(--text-light) !important; }
+.loc-map iframe { width: 100%; height: 480px; border: none; display: block; }
+
+/* CTA FINAL */
+.cta-final { padding: 120px 80px; background: var(--charcoal); text-align: center; position: relative; overflow: hidden; }
+.cta-final::before { content: 'FB'; position: absolute; font-family: 'Cormorant Garamond', serif; font-size: 400px; font-weight: 600; color: rgba(255,255,255,0.02); top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; letter-spacing: -0.05em; }
+.cta-final .section-label { color: var(--gold-light); }
+.cta-final .section-title { color: var(--white); margin: 0 auto 24px; max-width: 700px; }
+.cta-final .section-title em { color: var(--sage-light); }
+.cta-final-sub { font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.6); margin-bottom: 52px; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+.cta-final .btn-primary { background: var(--gold); font-size: 14px; padding: 18px 48px; }
+.cta-final .btn-primary:hover { background: var(--gold-light); }
+
+/* FOOTER */
+footer { background: #1a1a1a; padding: 60px 80px 40px; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 32px; }
+.footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 500; color: var(--white); margin-bottom: 16px; }
+.footer-brand span { color: var(--gold); }
+.footer-desc { font-size: 13px; font-weight: 300; line-height: 1.8; color: rgba(255,255,255,0.4); }
+.footer-col h4 { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; font-weight: 500; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 10px; }
+.footer-col a { text-decoration: none; font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.5); transition: color 0.3s; }
+.footer-col a:hover { color: var(--white); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.25); font-weight: 300; }
+
+/* WHATSAPP */
+.whatsapp-float { position: fixed; bottom: 32px; right: 32px; z-index: 999; display: flex; align-items: center; gap: 12px; }
+.whatsapp-label { background: var(--white); padding: 10px 18px; font-size: 13px; font-weight: 500; color: var(--charcoal); border-radius: 4px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); opacity: 0; transform: translateX(10px); transition: all 0.3s; white-space: nowrap; }
+.whatsapp-float:hover .whatsapp-label { opacity: 1; transform: translateX(0); }
+.whatsapp-btn { width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 32px rgba(37,211,102,0.4); text-decoration: none; animation: pulse-green 2s infinite; flex-shrink: 0; }
+.whatsapp-btn svg { width: 30px; height: 30px; fill: white; }
+
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 8px 32px rgba(37,211,102,0.4); }
+  50% { box-shadow: 0 8px 48px rgba(37,211,102,0.7); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.15s; }
+.reveal-delay-2 { transition-delay: 0.3s; }
+.reveal-delay-3 { transition-delay: 0.45s; }
+
+@media (max-width: 1024px) {
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 100px 40px 60px; }
+  .hero-right { height: 60vw; }
+  .sobre, .localizacao { grid-template-columns: 1fr; gap: 60px; padding: 80px 40px; }
+  .diferenciais, .servicos, .galeria, .avaliacoes, .cta-final, footer { padding: 80px 40px; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .servicos-layout { grid-template-columns: 1fr; }
+  .servicos-grid { background: none; }
+  .galeria-grid { grid-template-columns: 1fr 1fr; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr; gap: 40px; }
+  .navbar { padding: 0 24px; }
+  .nav-links { display: none; }
+  .diferenciais-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+}
+
+@media (max-width: 600px) {
+  /* Topbar */
+  .topbar { font-size: 11px; padding: 8px 16px; }
+
+  /* Navbar */
+  .navbar { padding: 0 20px; height: 60px; }
+  .nav-logo { font-size: 18px; }
+  .nav-cta { padding: 8px 16px; font-size: 11px; }
+
+  /* Hero */
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 80px 24px 40px; }
+  .hero-badge { font-size: 10px; padding: 6px 14px; margin-bottom: 24px; }
+  .hero-title { font-size: 38px; margin-bottom: 20px; }
+  .hero-sub { font-size: 14px; margin-bottom: 32px; }
+  .hero-actions { flex-direction: column; gap: 12px; }
+  .btn-primary, .btn-secondary { padding: 14px 28px; font-size: 12px; text-align: center; justify-content: center; }
+  .hero-stats { gap: 28px; margin-top: 40px; padding-top: 28px; }
+  .stat-number { font-size: 32px; }
+  .hero-right { height: 75vw; }
+  .hero-decor { bottom: 16px; right: 16px; padding: 14px 18px; }
+  .hero-decor-text { font-size: 16px; }
+
+  /* Sobre */
+  .sobre { padding: 60px 24px; }
+  .sobre-content { max-width: 100% !important; }
+  .sobre-text { font-size: 15px; }
+
+  /* Diferenciais */
+  .diferenciais { padding: 60px 24px; }
+  .diferenciais-header { margin-bottom: 40px; }
+  .cards-grid { gap: 2px; }
+  .card { padding: 32px 24px; }
+
+  /* Serviços */
+  .servicos { padding: 60px 24px; }
+  .servicos-layout { gap: 32px; }
+  .servico-item { padding: 28px 24px; gap: 16px; }
+  .servico-num { font-size: 36px; }
+  .servico-name { font-size: 20px; }
+  .servicos-foto img { min-height: 280px; }
+
+  /* Galeria */
+  .galeria { padding: 60px 24px; }
+  .galeria-grid { grid-template-columns: 1fr; gap: 3px; }
+  .galeria-img { aspect-ratio: 4/3; }
+
+  /* Avaliações */
+  .avaliacoes { padding: 60px 24px; }
+  .review-card { padding: 28px 24px; }
+  .review-text { font-size: 17px; }
+
+  /* Localização */
+  .localizacao { padding: 60px 24px; gap: 40px; }
+  .loc-map iframe { height: 280px; }
+
+  /* CTA Final */
+  .cta-final { padding: 80px 24px; }
+  .cta-final-sub { font-size: 14px; }
+  .cta-final .btn-primary { padding: 16px 32px; }
+
+  /* Footer */
+  footer { padding: 48px 24px 32px; }
+  .footer-top { gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+
+  /* WhatsApp */
+  .whatsapp-btn { width: 52px; height: 52px; }
+  .whatsapp-float { bottom: 20px; right: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  Atendimento presencial em Passo Fundo, RS — <span>New Office Mall</span> — (54) 99951-5505
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-logo">Fabiane <span>Basso</span></div>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#galeria">Espaço</a></li>
+    <li><a href="#avaliacoes">Depoimentos</a></li>
+    <li><a href="#localizacao">Localização</a></li>
+  </ul>
+  <a href="https://wa.me/5554999515505?text=Olá%2C+vim+do+site!+Quero+conhecer+mais+sobre+a+Fisioterapia+Fabiane+Basso." class="nav-cta" target="_blank">Agendar Consulta</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">Fisioterapeuta · Passo Fundo, RS</div>
+    <h1 class="hero-title">
+      Fisioterapeuta em<br>
+      <em>Passo Fundo</em><br>
+      <span class="gold">Reabilitação e Pilates Clínico</span>
+    </h1>
+    <p class="hero-sub">
+      Fisioterapia especializada com atendimento humanizado, dedicada à sua reabilitação, prevenção e bem-estar duradouro.
+    </p>
+    <div class="hero-actions">
+      <a href="https://wa.me/5554999515505?text=Olá%2C+vim+do+site!+Quero+conhecer+mais+sobre+a+Fisioterapia+Fabiane+Basso." class="btn-primary" target="_blank">↗ Agendar pelo WhatsApp</a>
+      <a href="#sobre" class="btn-secondary">Conhecer mais</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-number">20<span>+</span></div>
+        <div class="stat-label">Anos de experiência</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" style="font-size:28px; padding-top:8px;">CREFITO</div>
+        <div class="stat-label">67859/F · Registro ativo</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="fabiane-branca.jpg" alt="Fabiane Basso — Fisioterapeuta" class="hero-photo">
+    <div class="hero-overlay"></div>
+    <div class="hero-decor">
+      <div class="hero-decor-label">Localização</div>
+      <div class="hero-decor-text">New Office Mall<br><em>Passo Fundo, RS</em></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="sobre" id="sobre">
+  <div class="sobre-content" style="max-width:680px; margin: 0 auto;">
+    <p class="section-label reveal">Sobre Fabiane Basso</p>
+    <h2 class="section-title reveal reveal-delay-1">Fisioterapia especializada<br>em Passo Fundo há<br><em>mais de 20 anos</em></h2>
+    <p class="sobre-text reveal reveal-delay-2">
+      A fisioterapia é uma ciência da saúde que visa prevenir, tratar e estudar distúrbios do corpo humano. Com formação sólida e mais de 20 anos de atuação, Fabiane Basso tem a missão de promover a reabilitação, a prevenção e a melhoria da qualidade de vida dos seus pacientes.
+    </p>
+    <p class="sobre-text reveal reveal-delay-2">
+      Cada atendimento é conduzido com dedicação integral à solução dos problemas de cada paciente, com escuta ativa, protocolos individualizados e compromisso real com os resultados.
+    </p>
+    <div class="sobre-cred reveal reveal-delay-3">✦ CREFITO 67859/F — Fisioterapeuta Registrada</div>
+    <br>
+    <a href="https://www.instagram.com/fisio.fabianebasso/" class="sobre-cred reveal reveal-delay-3" target="_blank" style="text-decoration:none; margin-top:12px; display:inline-flex;">✦ @fisio.fabianebasso no Instagram</a>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section class="diferenciais" id="diferenciais">
+  <div class="diferenciais-header">
+    <div>
+      <p class="section-label reveal">Por que nos escolher</p>
+      <h2 class="section-title reveal reveal-delay-1">Por que escolher a Fabiane Basso como <em>Fisioterapeuta em Passo Fundo?</em></h2>
+    </div>
+    <p class="diferenciais-intro reveal reveal-delay-2">Baseado no que os próprios pacientes dizem sobre a experiência de se tratar com a Fabiane.</p>
+  </div>
+  <div class="cards-grid">
+    <div class="card reveal">
+      <span class="card-icon">🎯</span>
+      <h3 class="card-title">Dedicação à solução real</h3>
+      <p class="card-text">Cada sessão é conduzida com foco nos problemas específicos de cada paciente. Sem protocolos genéricos — tratamento personalizado do início ao fim.</p>
+    </div>
+    <div class="card reveal reveal-delay-1">
+      <span class="card-icon">🌿</span>
+      <h3 class="card-title">Profissionalismo e competência</h3>
+      <p class="card-text">Mais de 20 anos de formação e prática constante garantem um atendimento tecnicamente sólido, atualizado e profundamente humano.</p>
+    </div>
+    <div class="card reveal reveal-delay-2">
+      <span class="card-icon">✨</span>
+      <h3 class="card-title">Resultados que você sente</h3>
+      <p class="card-text">Pacientes relatam mais disposição, redução significativa das dores e melhoria real na qualidade de vida — não apenas no tratamento, mas no dia a dia.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section class="servicos" id="servicos">
+  <p class="section-label reveal">Especialidades</p>
+  <h2 class="section-title reveal reveal-delay-1">Serviços de Fisioterapia<br>em <em>Passo Fundo</em></h2>
+  <div class="servicos-layout">
+    <div class="servicos-grid">
+      <div class="servico-item reveal">
+        <div class="servico-num">01</div>
+        <div class="servico-info">
+          <div class="servico-name">Pilates Clínico</div>
+          <p class="servico-desc">Método supervisionado por fisioterapeuta, com aparelhos como Reformer e Cadillac. Indicado para reabilitação, fortalecimento e prevenção de lesões.</p>
+        </div>
+      </div>
+      <div class="servico-item reveal reveal-delay-1">
+        <div class="servico-num">02</div>
+        <div class="servico-info">
+          <div class="servico-name">Fisioterapia Ortopédica</div>
+          <p class="servico-desc">Tratamento de lesões musculoesqueléticas, pós-operatório, dores articulares e reabilitação motora com protocolos individualizados.</p>
+        </div>
+      </div>
+      <div class="servico-item reveal reveal-delay-2">
+        <div class="servico-num">03</div>
+        <div class="servico-info">
+          <div class="servico-name">Reabilitação e Prevenção</div>
+          <p class="servico-desc">Programas preventivos e de reabilitação funcional para recuperação completa e manutenção da saúde a longo prazo.</p>
+        </div>
+      </div>
+      <div class="servico-item reveal reveal-delay-3">
+        <div class="servico-num">04</div>
+        <div class="servico-info">
+          <div class="servico-name">Avaliação Fisioterapêutica</div>
+          <p class="servico-desc">Análise completa da condição do paciente para elaboração de plano de tratamento personalizado, com reavaliações periódicas de evolução.</p>
+        </div>
+      </div>
+    </div>
+    <div class="servicos-foto reveal reveal-delay-1">
+      <img src="servicos-foto.jpg" alt="Sessão de pilates clínico com Fabiane Basso">
+      <div class="servicos-foto-caption">
+        <span>Pilates clínico supervisionado</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section class="galeria" id="galeria">
+  <div class="galeria-header">
+    <p class="section-label reveal">O espaço</p>
+    <h2 class="section-title reveal reveal-delay-1">Espaço da clínica de<br>fisioterapia em <em>Passo Fundo</em></h2>
+  </div>
+  <div class="galeria-grid">
+    <div class="galeria-item">
+      <img src="galeria-studio.jpg" alt="Espaço de pilates clínico Fabiane Basso" class="galeria-img">
+    </div>
+    <div class="galeria-item">
+      <img src="galeria-dupla.jpg" alt="Sessão de pilates com Fabiane Basso" class="galeria-img">
+    </div>
+  </div>
+</section>
+
+<!-- AVALIAÇÕES -->
+<section class="avaliacoes" id="avaliacoes">
+  <div class="avaliacoes-header">
+    <p class="section-label reveal">Depoimentos</p>
+    <h2 class="section-title reveal reveal-delay-1">O que pacientes dizem sobre<br>a fisioterapeuta <em>Fabiane Basso</em></h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Simplesmente maravilhosa! Eu amo fazer pilates com a Fabi! Muito profissional e competente."</p>
+      <div class="review-author">Camila Sanches · Google</div>
+    </div>
+    <div class="review-card reveal reveal-delay-1">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Faço pilates há anos com a Fabiane, excelente profissional. Me sinto mais disposta e minhas dores diminuíram muito!! Obrigada Fabi!"</p>
+      <div class="review-author">Marina Rossi · Google</div>
+    </div>
+    <div class="review-card reveal reveal-delay-2">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Trabalho profissional com dedicação à solução dos problemas reportados pelos pacientes. Super recomendo a Fabi, nota 10!"</p>
+      <div class="review-author">Vitor DC · Google</div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCALIZAÇÃO -->
+<section class="localizacao" id="localizacao">
+  <div class="loc-content">
+    <p class="section-label reveal">Onde nos encontrar</p>
+    <h2 class="section-title reveal reveal-delay-1">Fisioterapeuta no<br>Centro de <em>Passo Fundo, RS</em></h2>
+    <div class="info-block reveal reveal-delay-2">
+      <div class="info-label">Endereço</div>
+      <div class="info-value">R. Paissandú, 1193 – 1303<br>Centro, Passo Fundo – RS, 99010-101<br><small style="color:var(--text-light);">New Office Mall</small></div>
+    </div>
+    <div class="info-block reveal reveal-delay-2">
+      <div class="info-label">Telefone / WhatsApp</div>
+      <div class="info-value"><a href="tel:+5554999515505">(54) 99951-5505</a></div>
+    </div>
+    <div class="info-block reveal reveal-delay-3">
+      <div class="info-label">Horários de Atendimento</div>
+      <table class="horarios-table">
+        <tr><td>Segunda-feira</td><td>07:30 – 18:00</td></tr>
+        <tr><td>Terça-feira</td><td>07:30 – 18:00</td></tr>
+        <tr><td>Quarta-feira</td><td>07:30 – 18:00</td></tr>
+        <tr><td>Quinta-feira</td><td>07:30 – 18:00</td></tr>
+        <tr><td>Sexta-feira</td><td>07:30 – 18:00</td></tr>
+        <tr><td class="closed">Sábado</td><td class="closed">Fechado</td></tr>
+        <tr><td class="closed">Domingo</td><td class="closed">Fechado</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="loc-map reveal reveal-delay-1">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540.5!2d-52.409!3d-28.263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94e4a7a0f0f0f0f0%3A0x0!2sR.+Paissand%C3%BA%2C+1193+-+1303%2C+Centro%2C+Passo+Fundo+-+RS%2C+99010-101!5e0!3m2!1spt!2sbr!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Localização Fabiane Basso Fisioterapeuta"></iframe>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <p class="section-label reveal">Pronto para começar?</p>
+  <h2 class="section-title reveal reveal-delay-1">Agende sua consulta de<br>fisioterapia em <em>Passo Fundo</em></h2>
+  <p class="cta-final-sub reveal reveal-delay-2">Entre em contato pelo WhatsApp e agende sua avaliação. Atendimento de segunda a sexta, das 7h30 às 18h.</p>
+  <a href="https://wa.me/5554999515505?text=Olá%2C+vim+do+site!+Quero+conhecer+mais+sobre+a+Fisioterapia+Fabiane+Basso." class="btn-primary reveal reveal-delay-3" target="_blank">↗ Falar pelo WhatsApp</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">Fabiane <span>Basso</span></div>
+      <p class="footer-desc">Fisioterapia especializada com mais de 20 anos de experiência. Reabilitação, prevenção e qualidade de vida em Passo Fundo, RS.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navegação</h4>
+      <ul>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#galeria">Espaço</a></li>
+        <li><a href="#avaliacoes">Depoimentos</a></li>
+        <li><a href="#localizacao">Localização</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contato</h4>
+      <ul>
+        <li><a href="tel:+5554999515505">(54) 99951-5505</a></li>
+        <li><a href="https://www.instagram.com/fisio.fabianebasso/" target="_blank">@fisio.fabianebasso</a></li>
+        <li><a href="#">New Office Mall, Passo Fundo</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Fabiane Basso Fisioterapeuta · CREFITO 67859/F</span>
+    <span>Passo Fundo, Rio Grande do Sul</span>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLUTUANTE -->
+<div class="whatsapp-float">
+  <div class="whatsapp-label">Fale com a Fabi agora!</div>
+  <a href="https://wa.me/5554999515505?text=Olá%2C+vim+do+site!+Quero+conhecer+mais+sobre+a+Fisioterapia+Fabiane+Basso." class="whatsapp-btn" target="_blank" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+</div>
+
+<script>
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50); });
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
